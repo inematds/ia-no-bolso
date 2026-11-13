@@ -1,10 +1,22 @@
 # IA no bolso
 
+[![IA no bolso](guia/assets/banner.jpg)](https://inematds.github.io/ia-no-bolso/guia/)
+
+**🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+
+## O que é
+
+Quando você usa a IA de um aplicativo comum, a pergunta sai do celular e vai para o servidor de uma empresa. A **IA no bolso** é o contrário: um modelo pequeno e aberto (o LFM3 1.7B, numa versão sem censura) que você baixa uma vez e que roda dentro do aparelho, até no modo avião. Serve para quem quer privacidade e não quer ouvir "não posso responder" para pergunta normal. Este guia mostra se o seu celular aguenta, o passo a passo no iPhone e no Android, e um kit grátis para rodar o mesmo modelo no computador.
+
+## 📖 Guia de uso
+
+Guia completo (landing + passo a passo): **https://inematds.github.io/ia-no-bolso/guia/**
+
+---
+
 **Tudo o que você pergunta para a IA do celular vai parar no computador de uma empresa. E às vezes ela ainda se nega a responder uma pergunta normal.**
 
 A **IA no bolso** é uma IA que mora dentro do seu celular: funciona no modo avião, não manda nada para a nuvem e não recusa pergunta normal. Este kit diz se o seu aparelho aguenta, mostra o passo a passo no iPhone e no Android, roda o mesmo modelo no seu computador só para você e mede a velocidade e as recusas com as suas perguntas.
-
-🌐 Guia ilustrado: https://inematds.github.io/ia-no-bolso/guia/ · [English](README.en.md) · [Español](README.es.md)
 
 ## O modelo
 

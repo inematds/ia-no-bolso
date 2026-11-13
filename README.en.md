@@ -1,10 +1,23 @@
 # AI in Your Pocket
 
+[![AI in Your Pocket](guia/assets/banner-en.jpg)](https://inematds.github.io/ia-no-bolso/guia/en/)
+
+**🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+
+## What it is
+
+When you use AI in a regular app, your question leaves your phone and goes to a company’s server. **AI in your pocket** works the other way around: it’s a small, open model (LFM3 1.7B, in an uncensored version) that you download once and run on your device, even in airplane mode. It’s for people who want privacy and don’t want to hear “I can’t answer that” in response to ordinary questions. This guide shows whether your phone can handle it, gives step-by-step instructions for iPhone and Android, and includes a free kit for running the same model on your computer.
+
+## 📖 User guide
+
+Full guide (landing + step by step): **https://inematds.github.io/ia-no-bolso/guia/en/**
+
+---
+
 **Everything you ask your phone’s AI gets sent to a company’s computer. And sometimes it even refuses to answer a normal question.**
 
 **AI in Your Pocket** is an AI that lives on your phone: it works in airplane mode, sends nothing to the cloud, and doesn’t refuse normal questions. This kit tells you whether your device can handle it, shows you the steps for iPhone and Android, runs the same model on your computer for your use only, and measures speed and refusals with your questions.
 
-🌐 Illustrated guide: https://inematds.github.io/ia-no-bolso/guia/ · [Português](README.md) · [English](README.en.md) · [Español](README.es.md)
 
 ## The model
 

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!-- projetos-landing-guia · EN version (source). guia/en/ and guia/es/ are translated copies. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI in your pocket — AI that works on your phone, in airplane mode</title>
+<meta name="description" content="AI in your pocket: AI that runs on your phone, in airplane mode, without sending anything to the cloud or refusing ordinary questions. Step-by-step instructions for iPhone and Android, proof in airplane mode, and a free kit for your PC.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/ia-no-bolso/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/ia-no-bolso/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/ia-no-bolso/guia/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --bad:#F0918A; --badbg:rgba(240,145,138,.08); --ok:#7CE0C6;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --bad:#A83426; --badbg:#fdf0ee; --ok:#0E6B55;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  section,.techhead{scroll-margin-top:96px}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  body.light nav{background:rgba(246,247,249,.85)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb);white-space:nowrap}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut);white-space:nowrap} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:rgba(250,204,21,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:#FACC15;color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:1200px){nav .links{gap:14px;font-size:.86rem}}
+  @media(max-width:1060px){nav .links a.sec[href="#medimos"],nav .links a.sec[href="#simples"]{display:none}}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.15rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:44ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card ul{color:var(--mut);font-size:.95rem;margin:.4em 0 0;padding-left:18px}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:22px}
+  .step>div{min-width:0}
+  p code,li code,td code{overflow-wrap:anywhere;font-size:.88em;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+  .step .b{width:46px;height:46px;border-radius:12px;background:#FACC15;color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.92rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px 6px}
+  .tbl{overflow-x:auto}
+  table.n{width:100%;border-collapse:collapse;font-size:.94rem;margin-top:10px}
+  table.n th,table.n td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  table.n th{color:var(--amb);font-family:Sora;font-weight:600}
+  .tag-s{display:inline-block;font:600 .75rem Sora,sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:.2em .7em;border:1px solid var(--line);color:var(--mut)}
+  .tag-s.ok{color:var(--ok);border-color:var(--ok)} .tag-s.warn{color:var(--amb);border-color:var(--amb)} .tag-s.bad{color:var(--bad);border-color:var(--bad)}
+  /* alert */
+  .alerta{background:var(--badbg);border:2px solid var(--bad);border-radius:16px;padding:26px 26px 22px}
+  .alerta .chip{color:var(--bad)}
+  .alerta h2{margin:.35em 0 .5em}
+  .duas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:680px){.duas{grid-template-columns:1fr}}
+  .resp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .resp .q{font:600 .8rem Sora,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .resp blockquote{margin:.6em 0;font:800 1.35rem/1.25 Sora,sans-serif}
+  .resp.errada{border-color:var(--bad)} .resp.errada blockquote{color:var(--bad)}
+  .resp.certa{border-color:var(--ok)} .resp.certa blockquote{color:var(--ok)}
+  .resp p{color:var(--mut);font-size:.92rem;margin:0}
+  .regra{font:800 1.15rem Sora,sans-serif;margin:6px 0 0}
+  /* simple */
+  .simples{max-width:74ch}
+  .simples p{font-size:1.1rem;line-height:1.75;margin:.8em 0}
+  /* video placeholder */
+  .vbox{aspect-ratio:16/9;border-radius:14px;border:1px dashed var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:20px}
+  .vbox b{font:800 1.3rem Sora,sans-serif}
+  .vbox span{color:var(--mut)}
+  /* technical section isolated below */
+  .techhead{background:var(--bg2);border-top:3px solid var(--amb);padding:58px 0 8px}
+  .techhead h2{font-family:Sora;margin:.3em 0 0;font-size:clamp(1.5rem,3.4vw,2.1rem)}
+  .techzone{background:var(--bg2)}
+  .techzone .card{background:var(--card)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">📱</span> AI in your pocket</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#simples">Simple explanation</a>
+    <a class="sec" href="#celular">On your phone</a>
+    <a class="sec" href="#alerta">Warning</a>
+    <a class="sec" href="#medimos">What we measured</a>
+    <a class="sec" href="#tecnico">Kit (technical)</a>
+    <span class="lang"><a href="../">PT</a><a class="on" href="./">EN</a><a href="../es/">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+    <a class="btn" href="https://github.com/inematds/ia-no-bolso" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">AI in your pocket · free kit · offline</span>
+      <h1>Everything you ask your phone’s AI ends up on a company’s computer. <span class="amb">AI in your pocket</span> keeps it all on your device.</h1>
+      <p class="lead">Sometimes your phone’s AI also refuses to answer ordinary questions. With AI in your pocket, the model lives on your phone: it works in airplane mode, sends nothing to the cloud, and doesn’t refuse ordinary questions.</p>
+      <div class="cta">
+        <a class="btn" href="#simples">Understand it in 2 minutes</a>
+        <a class="btn ghost" href="#celular">Step-by-step on your phone</a>
+      </div>
+    </div>
+    <figure><img src="../assets/banner-en.jpg" alt="AI in your pocket — AI that lives on your phone: works in airplane mode, nothing goes to the cloud"></figure>
+  </div>
+</header>
+
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">In short</span>
+  <p>When you use AI in a regular app, your question leaves your phone and goes to a company’s server. <strong>AI in your pocket</strong> works the other way around: it’s a small, open model (LFM3 1.7B, in an uncensored version) that you download once and run on your device, even in airplane mode. It’s for people who want privacy and don’t want to hear “I can’t answer that” in response to ordinary questions. This guide shows whether your phone can handle it, gives step-by-step instructions for iPhone and Android, and includes a free kit for running the same model on your computer.</p>
+  <figure style="margin:22px 0 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-en.jpg" alt="AI in your pocket — your AI on your phone: can my phone handle it, step-by-step iPhone guide, Android, proof in airplane mode, on your PC just for you, check anything serious" loading="lazy" style="width:100%;display:block"></figure>
+</div></section>
+
+<section id="video"><div class="wrap">
+  <span class="chip">Video</span>
+  <h2>Understand it in a few minutes</h2>
+  <p class="sub">The explainer video for this guide is in preparation and will appear here when it’s published.</p>
+  <!-- VIDEO: entra o explicavideo do projeto quando publicado -->
+  <div class="vbox"><b>Video coming soon</b><span>Meanwhile, read the plain-language explanation just below.</span></div>
+</div></section>
+
+<section id="simples"><div class="wrap">
+  <span class="chip">In plain language</span>
+  <h2>What it is, <span class="amb">without the jargon</span></h2>
+  <div class="simples">
+    <p>Think of your phone’s AI as a customer service agent. In a regular app, that agent is in a company building, far away from you: every question you ask travels there over the internet, and the answer comes back. The company can see what went through.</p>
+    <p>With <strong>AI in your pocket</strong>, the agent lives on your phone. You download a file a little over 1 GB in size, just once, over Wi-Fi. After that, you can even turn on <strong>airplane mode</strong>: it keeps answering because it doesn’t need to leave your device.</p>
+    <p>This version is called “uncensored”: its tendency to say “I can’t help with that” to ordinary questions like “How do I close a frozen program?” has been removed. In return, you’re responsible for what you do with the answers.</p>
+    <p>It’s small, so it <strong>makes mistakes</strong>. Use it for drafts, summaries, and conversation. For health, money, and legal matters, use it as a starting point and check with someone who knows the subject.</p>
+  </div>
+</div></section>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">What changes</span>
+  <h2>Regular app AI × <span class="amb">AI in your pocket</span></h2>
+  <p class="sub">The same kind of conversation, with one difference: where the question gets answered.</p>
+  <div class="grid g3">
+    <div class="card"><h3>✈️ Works in airplane mode</h3><p>After the download, Wi-Fi and mobile data can stay off. The answer comes from your device itself.</p></div>
+    <div class="card"><h3>🔒 Nothing goes to the cloud</h3><p>Your question doesn’t travel to any company’s server. It stays on your phone (or on your PC, just for you).</p></div>
+    <div class="card"><h3>💬 Doesn’t refuse ordinary questions</h3><p>It refused 0 of our 5 ordinary questions. According to AtomicChat, which published this version, false refusals fell from 5.2% to 0%.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card"><h3>📦 The model</h3><p><strong>LFM3 1.7B</strong> from Liquid AI (open), in the uncensored version published by AtomicChat on Hugging Face. The file is <strong>1.13 GB</strong> (smaller, default version) or <strong>1.59 GB</strong> (slightly better version).</p></div>
+    <div class="card"><h3>📝 Text only</h3><p>This file responds to text. It can’t read photos or audio: its repository doesn’t include that part.</p></div>
+  </div>
+</div></section>
+
+<section id="celular"><div class="wrap">
+  <span class="chip">Can my phone handle it?</span>
+  <h2>Before downloading: <span class="amb">will it fit on your device?</span></h2>
+  <p class="sub">Simple rule: your phone needs about <strong>3 GB of memory</strong> and about <strong>2 GB of free storage</strong> for the Q4 version (1.13 GB). If you have a computer, you can ask the kit, which tells you the right file, app, and conversation length for your device (<a href="#guia">how to use it ↓</a>).</p>
+  <div class="grid g3">
+    <div class="card"><h3>Memory (RAM)</h3><p>You need about 3 GB. With less memory, the kit recommends the smaller version or the fallback.</p></div>
+    <div class="card"><h3>Free space</h3><p>About 2 GB free for the 1.13 GB file. If you have room, the 1.59 GB version answers a little better.</p></div>
+    <div class="card"><h3>System</h3><p>iPhone: the app requires <strong>iOS 18 or later</strong>. Android: the app imports the file, but compatibility has not yet been confirmed (see below).</p></div>
+  </div>
+</div></section>
+
+<section id="iphone"><div class="wrap">
+  <span class="chip">iPhone</span>
+  <h2>Step-by-step on <span class="amb">iPhone</span></h2>
+  <p class="sub">Shown working on an iPhone 16 by others (26 tokens per second on an iPhone 16 Pro Max in the test shown; a token is part of a word). We have <strong>not tested</strong> it on a phone.</p>
+  <div class="step"><div class="b">1</div><div><h3>Install OnDevice: Local AI Studio</h3><p>From the App Store. The app requires <strong>iOS 18 or later</strong>.</p></div></div>
+  <div class="step"><div class="b">2</div><div><h3>Get past the first screen</h3><p>When you first open the app, it asks you to choose a model. Pick any one just to continue.</p></div></div>
+  <div class="step"><div class="b">3</div><div><h3>Search for “atomic chat”</h3><p>Go to <strong>Models</strong> → Hugging Face search (the “Search online · Hugging Face” field; Hugging Face is the site where AI models are published) and type <strong>atomic chat</strong>.</p></div></div>
+  <div class="step"><div class="b">4</div><div><h3>Download LFM3-1.7B-Uncensored-GGUF</h3><p>Tap the model published by AtomicChat, then tap <strong>download</strong>. It’s about 1.1 GB, so use Wi-Fi.</p></div></div>
+  <div class="step"><div class="b">5</div><div><h3>Load it and ask a question</h3><p>When it’s done, go back to the <strong>assistant</strong>, select the model you downloaded, and ask a question.</p></div></div>
+  <div class="step"><div class="b">6</div><div><h3>Adjust “context” if it appears</h3><p>“Context” is how much of the conversation the AI can remember at once. If the app shows this setting, start at <strong>4,096</strong>. If you run out of memory (the app freezes or closes), lower it.</p></div></div>
+  <div class="card" style="margin-top:8px"><h3>What we know so far</h3><p>In the test shown, <strong>PocketPal couldn’t load</strong> this file, and AtomicChat’s own app didn’t work with it either. Use OnDevice.</p></div>
+</div></section>
+
+<section id="android"><div class="wrap">
+  <span class="chip">Android</span>
+  <h2>On <span class="amb">Android</span> <span class="tag-s warn" style="vertical-align:middle">not confirmed yet</span></h2>
+  <p class="sub">The Layla app imports this type of file (GGUF), but this model hasn’t yet been confirmed on Android. Try it. If it won’t open, use the fallback.</p>
+  <div class="step"><div class="b">1</div><div><h3>Install Layla</h3><p>From the Play Store. It imports GGUF files (the model format).</p></div></div>
+  <div class="step"><div class="b">2</div><div><h3>Download the file in your browser</h3><p><code>LFM3-1.7B-Uncensored-AD-Q4_K_M.gguf</code>, from the model page: <a href="https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF/tree/main" target="_blank" rel="noopener">huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF</a>.</p></div></div>
+  <div class="step"><div class="b">3</div><div><h3>Import it into Layla and open a chat</h3><p>Select the downloaded file inside the app.</p></div></div>
+  <div class="step"><div class="b">4</div><div><h3>Didn’t open? Use the fallback</h3><p>The app may not have the new engine yet (LFM3 is recent). The fallback is Liquid AI’s regular version, with safety restrictions: <code>LiquidAI/LFM3-1.7B-GGUF</code> → <code>LFM3-1.7B-Q4_K_M.gguf</code>. Or wait for the app update.</p></div></div>
+</div></section>
+
+<section id="aviao"><div class="wrap">
+  <span class="chip">The proof</span>
+  <h2>Proof in <span class="amb">airplane mode</span>: always check</h2>
+  <p class="sub">This is how you confirm, without taking anyone’s word for it, that the answer came from your device.</p>
+  <div class="flow"><span>Model loaded</span><span class="arr">→</span><span>Turn on airplane mode (Wi-Fi and mobile data off)</span><span class="arr">→</span><span>Ask a question</span></div>
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card"><h3><span class="tag-s ok">It answers</span></h3><p style="margin-top:.6em">The answer came from your device, not the cloud. That’s AI in your pocket.</p></div>
+    <div class="card"><h3><span class="tag-s bad">Connection error</span></h3><p style="margin-top:.6em">The app is using a server. That’s not AI in your pocket.</p></div>
+  </div>
+</div></section>
+
+<section id="alerta"><div class="wrap">
+  <div class="alerta">
+    <span class="chip">⚠️ Warning · the most important finding</span>
+    <h2>The same question, two different answers</h2>
+    <p class="mut" style="margin:0;max-width:66ch">We asked the model twice: “What is the maximum daily dose of paracetamol for an adult, and when should they see a doctor?”</p>
+    <div class="duas">
+      <div class="resp errada"><span class="q">1st time · <span class="tag-s bad">wrong and dangerous</span></span><blockquote>“4 g per dose”</blockquote><p>The usual limit is 4 g <strong>per day</strong>, not per dose. Taking 4 g at once can damage the liver.</p></div>
+      <div class="resp certa"><span class="q">2nd time · <span class="tag-s ok">got the daily limit right</span></span><blockquote>“4 g per day”</blockquote><p>500 mg to 1 g per dose. Same model, same question.</p></div>
+    </div>
+    <p class="regra">Small models are a gamble. For health, legal, and financial matters, check with a professional before acting.</p>
+  </div>
+</div></section>
+
+<section id="medimos"><div class="wrap">
+  <span class="chip">What we measured (13/11/2026)</span>
+  <h2>Our numbers, <span class="amb">plain and simple</span></h2>
+  <p class="sub">We didn’t have a phone to test. We ran it on a PC <strong>using only the processor, 4 cores</strong> (the closest equivalent to a phone), while the machine was busy. It’s not a phone: it’s an approximation.</p>
+  <div class="tbl"><table class="n">
+    <tr><th>What</th><th>Result</th></tr>
+    <tr><td>Ollama 0.33.2 (popular program for running AI on a computer)</td><td><span class="tag-s bad">didn’t open</span> the file (“failed to validate GGUF”)</td></tr>
+    <tr><td>New llama.cpp, version from 13/11/2026 (the engine the kit uses)</td><td><span class="tag-s ok">opened</span>: the model is recent and needs an up-to-date program</td></tr>
+    <tr><td>Speed, processor only</td><td>about <strong>10 to 20 tokens per second</strong> (a token is part of a word: it’s the unit the AI writes in)</td></tr>
+    <tr><td>Kit measurement (5 ordinary questions)</td><td>average of <strong>19.8 tokens per second</strong> and <strong>0 refusals</strong></td></tr>
+    <tr><td>How it responds</td><td>it <strong>thinks in English</strong> before answering: a long answer takes 1 to 3 minutes</td></tr>
+    <tr><td>Knowledge</td><td>41% on MMLU, a general knowledge test (publisher’s figure): good for drafts, weak on precise facts</td></tr>
+  </table></div>
+  <p class="mut" style="margin-top:14px">We also saw a factual error in a history question: about trench warfare, it mentioned “the two allied powers and the Austro-Hungarian Empire.” On the Linux question, it gave a complete and correct answer. The raw answers are in the repository’s <a href="https://github.com/inematds/ia-no-bolso/tree/main/exemplo" target="_blank" rel="noopener">exemplo/</a> folder.</p>
+</div></section>
+
+<section id="responsavel"><div class="wrap">
+  <span class="chip">Responsible use</span>
+  <h2>Uncensored: <span class="amb">you’re responsible</span></h2>
+  <p class="sub">An “uncensored” model is an open model with its reflex to refuse removed. It answers almost anything, which means you’re responsible for how you use it.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Private doesn’t mean anonymous</h3><p>Running it on your phone hides your questions from AI companies. It doesn’t change what’s illegal.</p></div>
+    <div class="card"><h3>No refusals doesn’t mean no mistakes</h3><p>It said “4 g of paracetamol per dose.” For health, legal, and financial matters, check before acting.</p></div>
+    <div class="card"><h3>Download only from official sources</h3><p>Downloaded models are third-party files. Use only <code>AtomicChat/...</code> or <code>LiquidAI/...</code> on Hugging Face.</p></div>
+    <div class="card"><h3>Your PC server is just for you</h3><p>The PC kit only serves the computer it runs on. Don’t expose it to the network without a password and firewall.</p></div>
+    <div class="card"><h3>Keep it away from children</h3><p>Don’t install an uncensored model on a device used by minors.</p></div>
+    <div class="card"><h3>Prefer the regular version</h3><p>If the regular version (<code>LiquidAI/LFM3-1.7B-GGUF</code>) answers, use it. The uncensored version is for when it refuses a legitimate question.</p></div>
+  </div>
+  <p class="mut" style="margin-top:16px">Model license: LFM Open License v1.0, from Liquid AI. Read it before using the model in a product. Battery and heat: running a model heats up your phone; keep it plugged in for long conversations.</p>
+</div></section>
+
+<section id="pergunta"><div class="wrap">
+  <span class="chip">What about you?</span>
+  <h2>What question have you stopped asking <span class="amb">because you didn’t want to hand it over to a company?</span></h2>
+  <p class="sub">The full kit, step-by-step guide, and measurements are free at <a href="https://inema.club" target="_blank" rel="noopener">inema.club</a>, directly on the internet.</p>
+</div></section>
+
+<div id="tecnico" class="techhead"><div class="wrap">
+  <span class="chip">Technical section</span>
+  <h2>The kit: <span class="amb">for anyone who wants to run and measure it on a computer</span></h2>
+  <p class="sub">From here down, it’s the technical section: commands, scripts, and raw numbers. You <strong>don’t need</strong> this section to understand what came before or to use it on your phone.</p>
+</div></div>
+
+<div class="techzone">
+<section id="kit"><div class="wrap">
+  <span class="chip">What’s in the kit</span>
+  <h2>What's in the kit, <span class="amb">without the model file</span></h2>
+  <p class="sub">The kit doesn’t include the model file: it downloads it directly from Hugging Face. Everything runs on Python 3 and bash.</p>
+  <div class="tbl"><table class="n">
+    <tr><th>File</th><th>Purpose</th></tr>
+    <tr><td><code>kit/escolher.py</code></td><td>Can my phone handle it? Recommends a file, app, and context based on memory and free space</td></tr>
+    <tr><td><code>kit/pc/rodar.sh</code></td><td>Compiles llama.cpp (CPU only), downloads the model while checking its size, starts it <strong>only on 127.0.0.1</strong></td></tr>
+    <tr><td><code>kit/medir.py</code></td><td>Measures tokens/s, time, and refusals; refuses to connect to any address that isn’t local</td></tr>
+    <tr><td><code>kit/provas/perguntas.json</code></td><td>5 ordinary questions (2 about “false refusals”): replace them with your own</td></tr>
+    <tr><td><code>kit/modelos.json</code></td><td>Files, sizes, apps, and fallback, checked on 13/11/2026</td></tr>
+    <tr><td><code>kit/CELULAR.md</code> · <code>kit/USO-RESPONSAVEL.md</code></td><td>Phone setup instructions and usage rules</td></tr>
+    <tr><td><code>exemplo/</code></td><td>Our measurements and raw answers</td></tr>
+  </table></div>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <span class="chip">Prerequisites</span>
+  <h2>What you need on your computer</h2>
+  <p class="sub">Tested on Linux on 13/11/2026.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Python 3 and git</h3><p>To clone the kit and run <code>escolher.py</code>, <code>medir.py</code>, and the tests.</p></div>
+    <div class="card"><h3>cmake + C++ compiler</h3><p><code>rodar.sh</code> compiles llama.cpp. On Ubuntu: <code>sudo apt install cmake build-essential</code>.</p></div>
+    <div class="card"><h3>~1.1 GB and curl</h3><p>To download the model once. After that, you can disconnect from the internet.</p></div>
+  </div>
+  <p class="mut" style="margin-top:14px"><code>rodar.sh</code> uses Linux commands (<code>stat -c</code>, <code>nproc</code>, <code>ss</code>). On Windows, use WSL; on macOS, adjustments may be needed.</p>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <span class="chip">Usage guide</span>
+  <h2>From scratch to <span class="amb">chat on 127.0.0.1</span></h2>
+  <p class="sub">Actual commands from the repository.</p>
+  <div class="step"><div class="b">1</div><div><h3>Clone the kit</h3>
+<pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/ia-no-bolso</span> && <span class="k">cd</span> ia-no-bolso</pre></div></div>
+  <div class="step"><div class="b">2</div><div><h3>Can my phone handle it?</h3><p>Enter the system, memory (GB), and, if you want, free space (GB).</p>
+<pre><span class="k">python3 kit/escolher.py</span> --sistema iphone --ram 8
+<span class="c"># (the script answers in Portuguese) SIM. Baixe LFM3-1.7B-Uncensored-AD-Q6_K.gguf (1.59 GB).</span>
+<span class="c"># App: OnDevice: Local AI Studio — App Store; pede iOS 18+ ...</span>
+<span class="c"># Contexto: 4096 tokens.</span>
+<span class="k">python3 kit/escolher.py</span> --sistema android --ram 3 --livre 1
+<span class="c"># NÃO com este modelo. Reserva: LFM3-1.7B-Q4_K_M.gguf ... (1.1 GB).</span>
+<span class="c"># Aviso: libere espaço: precisa de ~1.6 GB livres</span></pre></div></div>
+  <div class="step"><div class="b">3</div><div><h3>On your PC: run the AI just for you</h3><p>Compiles llama.cpp (CPU only), downloads Q4 (1.1 GB) once while checking the exact size, and starts the server on <code>127.0.0.1:18431</code>: only this computer can access it. Open the chat in your browser.</p>
+<pre><span class="k">bash kit/pc/rodar.sh</span>
+<span class="c"># AI in your pocket: http://127.0.0.1:18431  (Ctrl+C to stop; nothing leaves this machine)</span>
+<span class="k">QUANT=Q6_K bash kit/pc/rodar.sh</span>          <span class="c"># larger version</span>
+<span class="k">PORTA=18431 THREADS=4 bash kit/pc/rodar.sh</span></pre></div></div>
+  <div class="step"><div class="b">4</div><div><h3>Proof in airplane mode on PC</h3><p>After the download, disconnect from the internet: it keeps responding at <code>http://127.0.0.1:18431</code>.</p></div></div>
+  <div class="step"><div class="b">5</div><div><h3>Measure speed and refusals</h3><p>With the server running, open another terminal. Replace <code>kit/provas/perguntas.json</code> with your own questions.</p>
+<pre><span class="k">python3 kit/medir.py</span>                     <span class="c"># 5 ordinary questions → medidas.json</span>
+<span class="k">python3 kit/medir.py</span> --perguntas minhas.json --saida minhas-medidas.json</pre></div></div>
+  <div class="step"><div class="b">6</div><div><h3>Run the kit tests</h3>
+<pre><span class="k">python3 kit/testes/run.py</span>                <span class="c"># 23 tests, no network</span></pre></div></div>
+</div></section>
+
+<section id="numeros"><div class="wrap">
+  <span class="chip">Raw numbers</span>
+  <h2>llama-bench, <span class="amb">CPU only</span></h2>
+  <p class="sub">LFM3 1.7B Q4_K_M, machine under heavy load (hence the variation). <code>pp</code> = prompt processing, <code>tg</code> = response generation, in tokens per second. File: <code>exemplo/bench-cpu.txt</code>.</p>
+  <div class="tbl"><table class="n">
+    <tr><th>Cores</th><th>Test</th><th>tokens/s</th></tr>
+    <tr><td>4</td><td>pp128</td><td>27.78 ± 2.16</td></tr>
+    <tr><td>4</td><td>tg64</td><td>13.87 ± 6.84</td></tr>
+    <tr><td>4</td><td>pp64</td><td>63.39 ± 3.47</td></tr>
+    <tr><td>4</td><td>tg128</td><td>20.55 ± 7.42</td></tr>
+    <tr><td>6</td><td>tg128</td><td>13.92 ± 2.00</td></tr>
+    <tr><td>8</td><td>tg64</td><td>2.97 ± 1.52</td></tr>
+  </table></div>
+  <p class="mut" style="margin-top:14px"><code>kit/medir.py</code> (<code>exemplo/medidas-kit.json</code>): 5 questions, average 19.8 tokens/s, 0 refusals, 0 cut off. Publisher’s figures (from the model card, not measured by us): refusals of harmful requests 61.7% → 0%; false refusals 5.2% → 0%; MMLU 41.0% → 41.0%.</p>
+</div></section>
+
+<section id="irmaos"><div class="wrap">
+  <span class="chip">Related kits</span>
+  <h2>Explore further</h2>
+  <div class="grid g3">
+    <a class="card" href="https://inematds.github.io/ia-privada-3-niveis/guia/" target="_blank" rel="noopener"><h3>ia-privada-3-niveis</h3><p>Private AI on your computer (regular or uncensored), accessible from anywhere through Tailscale.</p></a>
+    <a class="card" href="https://github.com/inematds/ia-sem-censura-defensiva" target="_blank" rel="noopener"><h3>ia-sem-censura-defensiva</h3><p>Use an uncensored model to defend yourself, not to attack.</p></a>
+    <a class="card" href="https://github.com/inematds/provedores-semcensura" target="_blank" rel="noopener"><h3>provedores-semcensura</h3><p>When you can’t run it locally.</p></a>
+  </div>
+  <p class="mut" style="margin-top:18px">Repository: <a href="https://github.com/inematds/ia-no-bolso" target="_blank" rel="noopener">github.com/inematds/ia-no-bolso</a> · Kit: MIT · Model: LFM Open License v1.0 (Liquid AI), not included.</p>
+</div></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Python 3</div><div class="pill">bash</div><div class="pill">llama.cpp</div><div class="pill">offline</div>
+    <p style="margin-top:18px">AI in your pocket · AI that stays on your device ·
+      <a href="https://github.com/inematds/ia-no-bolso">inematds/ia-no-bolso</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='ia-no-bolso-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
