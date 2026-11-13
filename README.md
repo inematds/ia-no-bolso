@@ -12,6 +12,8 @@ Quando você usa a IA de um aplicativo comum, a pergunta sai do celular e vai pa
 
 Guia completo (landing + passo a passo): **https://inematds.github.io/ia-no-bolso/guia/**
 
+📱 **Testar no celular sem instalar nada:** https://inematds.github.io/ia-no-bolso/celular/ — abre no navegador, baixa 1,1 GB uma vez e depois funciona no modo avião (testado no Chrome simulando Android; celular de verdade ainda não).
+
 ---
 
 **Tudo o que você pergunta para a IA do celular vai parar no computador de uma empresa. E às vezes ela ainda se nega a responder uma pergunta normal.**

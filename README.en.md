@@ -12,6 +12,8 @@ When you use AI in a regular app, your question leaves your phone and goes to a 
 
 Full guide (landing + step by step): **https://inematds.github.io/ia-no-bolso/guia/en/**
 
+📱 **Try it on your phone, nothing to install:** https://inematds.github.io/ia-no-bolso/celular/?lang=en — opens in the browser, downloads 1.1 GB once and then works in airplane mode (tested in Chrome emulating Android; not yet on a real phone).
+
 ---
 
 **Everything you ask your phone’s AI gets sent to a company’s computer. And sometimes it even refuses to answer a normal question.**

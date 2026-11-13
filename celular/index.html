@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IA no bolso — abre e usa</title>
+<meta name="description" content="IA sem censura rodando dentro do seu celular, no navegador, sem instalar nada. Baixa uma vez (1,1 GB) e funciona no modo avião.">
+<meta name="theme-color" content="#0c0c10">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icone.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c10;--s1:#16161e;--s2:#1d1d27;--line:#272730;--tx:#e6e6e6;--mut:#a8a8b3;--amb:#FACC15;--ink:#1a1206;--red:#f87171;--ok:#4ade80}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 Inter,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:18px 16px 40px}
+h1{font:800 1.7rem/1.15 Sora,sans-serif;margin:6px 0 4px}
+h1 b{color:var(--amb)}
+.sub{color:var(--mut);margin:0 0 16px}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
+.card h2{font:700 1.05rem Sora,sans-serif;margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.chip{font:600 .78rem Sora,sans-serif;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:var(--mut)}
+.chip.ok{color:var(--ok);border-color:#1f4d2e}.chip.no{color:var(--red);border-color:#5a2525}
+button{font:700 1rem Sora,sans-serif;border:0;border-radius:12px;padding:14px 16px;cursor:pointer;width:100%}
+.b1{background:var(--amb);color:var(--ink)}
+.b2{background:var(--s2);color:var(--tx);border:1px solid var(--line)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:8px}.row>*{flex:1}
+label.opt{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid var(--line);border-radius:12px;margin:6px 0;cursor:pointer}
+label.opt input{margin-top:4px;accent-color:var(--amb)}
+label.opt small{display:block;color:var(--mut)}
+.bar{height:12px;background:var(--s2);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.bar>i{display:block;height:100%;width:0;background:var(--amb);transition:width .3s}
+#st{color:var(--mut);font-size:.9rem;min-height:1.4em}
+#chat{display:flex;flex-direction:column;gap:10px;margin:10px 0;max-height:55vh;overflow:auto}
+.m{padding:10px 12px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word}
+.m.u{background:var(--s2);align-self:flex-end;max-width:88%}
+.m.a{background:#14141b;border:1px solid var(--line)}
+.m .think{color:var(--mut);font-size:.82rem;font-style:italic}
+.m .tps{color:var(--mut);font-size:.75rem;margin-top:6px}
+textarea{width:100%;min-height:72px;background:var(--s2);color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:12px;font:16px Inter,sans-serif;resize:vertical}
+.warn{border-color:#5a4a12;background:#1a1608}
+.warn b{color:var(--amb)}
+.av{border-color:#1f4d2e}
+a{color:var(--amb)}
+.hide{display:none}
+footer{color:var(--mut);font-size:.85rem;text-align:center;margin-top:24px}
+</style>
+</head>
+<body>
+<main>
+  <h1 data-t="titulo">IA no <b>bolso</b>: abre e usa</h1>
+  <p class="sub" data-t="sub">Uma IA sem censura rodando <b>dentro do seu celular</b>, no navegador. Sem instalar app, sem conta. Baixa uma vez e depois funciona até no modo avião.</p>
+
+  <div class="card" id="aparelho">
+    <h2 data-t="seuAparelho">Seu aparelho</h2>
+    <div class="chips" id="chips"></div>
+    <p id="aviso-ap" class="sub" style="margin:8px 0 0"></p>
+  </div>
+
+  <div class="card" id="passo1">
+    <h2 data-t="qualIA">1. Qual IA</h2>
+    <label class="opt"><input type="radio" name="mod" value="sem" checked><span><b data-t="semCensura">Sem censura</b><small data-t="semCensuraD">LFM3 1.7B (AtomicChat) · 1,1 GB · não recusa pergunta normal</small></span></label>
+    <label class="opt"><input type="radio" name="mod" value="normal"><span><b data-t="normal">Normal, com travas</b><small data-t="normalD">LFM3 1.7B (Liquid AI) · 1,1 GB · recusa o que for perigoso</small></span></label>
+    <h2 style="margin-top:14px" data-t="baixar">2. Baixar (uma vez só)</h2>
+    <p class="sub" style="margin:0 0 10px" data-t="wifi">Use Wi-Fi: são 1,1 GB. Fica guardado no navegador deste celular.</p>
+    <button class="b1" id="btBaixar" data-t="btBaixar">Baixar e ligar a IA</button>
+    <div class="bar"><i id="barra"></i></div>
+    <div id="st"></div>
+  </div>
+
+  <div class="card hide" id="conversa">
+    <h2 data-t="conversa">3. Converse</h2>
+    <div class="card av" style="margin:0 0 10px"><span data-t="aviao">✈️ Prova de privacidade: ligue agora o <b>modo avião</b> e pergunte. Se responder, a resposta saiu do seu celular.</span></div>
+    <div id="chat"></div>
+    <textarea id="txt" data-tp="placeholder" placeholder="Escreva sua pergunta…"></textarea>
+    <div class="row" style="margin-top:8px">
+      <button class="b1" id="btEnviar" data-t="enviar">Enviar</button>
+      <button class="b2 hide" id="btParar" data-t="parar">Parar</button>
+    </div>
+    <label class="opt" style="margin-top:10px"><input type="checkbox" id="rapido" checked><span><b data-t="rapido">Modo rápido</b><small data-t="rapidoD">Responde direto, sem "pensar" antes (bem mais rápido no celular).</small></span></label>
+  </div>
+
+  <div class="card warn">
+    <span data-t="confira"><b>Ela erra.</b> No nosso teste, a mesma pergunta sobre dose de remédio saiu errada uma vez e certa na outra. Saúde, direito e dinheiro: confira com um profissional. Sem censura = a responsabilidade é sua.</span>
+  </div>
+
+  <div class="card">
+    <h2 data-t="espaco">Liberar espaço</h2>
+    <p class="sub" style="margin:0 0 10px" data-t="espacoD">Apaga o modelo guardado neste navegador (1,1 GB).</p>
+    <button class="b2" id="btApagar" data-t="apagar">Apagar a IA deste celular</button>
+  </div>
+
+  <footer>
+    <a href="../guia/" data-t="guia">Guia completo (iPhone, Android, PC)</a> · <a href="https://inema.club">inema.club</a><br>
+    <span data-t="rodape">Grátis no inema.club, direto na internet.</span>
+  </footer>
+</main>
+
+<script type="module">
+import { Wllama } from './wllama/index.js';
+
+// ---------- idioma (pt / en / es pelo navegador; ?lang= força) ----------
+const T = {
+  en: {titulo:'AI in your <b>pocket</b>: open and use',sub:'An uncensored AI running <b>inside your phone</b>, in the browser. No app, no account. Download once and it works even in airplane mode.',seuAparelho:'Your device',qualIA:'1. Which AI',semCensura:'Uncensored',semCensuraD:'LFM3 1.7B (AtomicChat) · 1.1 GB · does not refuse normal questions',normal:'Regular, with guardrails',normalD:'LFM3 1.7B (Liquid AI) · 1.1 GB · refuses dangerous requests',baixar:'2. Download (only once)',wifi:'Use Wi-Fi: it is 1.1 GB. It stays stored in this phone\'s browser.',btBaixar:'Download and start the AI',conversa:'3. Chat',aviao:'✈️ Privacy proof: turn on <b>airplane mode</b> now and ask. If it answers, the answer came from your phone.',enviar:'Send',parar:'Stop',rapido:'Fast mode',rapidoD:'Answers right away, without "thinking" first (much faster on a phone).',confira:'<b>It makes mistakes.</b> In our test, the same question about a medicine dose came out wrong once and right the other time. Health, law and money: check with a professional. Uncensored = you are responsible.',espaco:'Free up space',espacoD:'Deletes the model stored in this browser (1.1 GB).',apagar:'Delete the AI from this phone',guia:'Full guide (iPhone, Android, PC)',rodape:'Free at inema.club, right on the internet.',placeholder:'Type your question…'},
+  es: {titulo:'IA en el <b>bolsillo</b>: abre y usa',sub:'Una IA sin censura funcionando <b>dentro de tu celular</b>, en el navegador. Sin app, sin cuenta. Se descarga una vez y luego funciona hasta en modo avión.',seuAparelho:'Tu dispositivo',qualIA:'1. Qué IA',semCensura:'Sin censura',semCensuraD:'LFM3 1.7B (AtomicChat) · 1,1 GB · no rechaza preguntas normales',normal:'Normal, con protecciones',normalD:'LFM3 1.7B (Liquid AI) · 1,1 GB · rechaza lo peligroso',baixar:'2. Descargar (una sola vez)',wifi:'Usa Wi-Fi: son 1,1 GB. Queda guardado en el navegador de este celular.',btBaixar:'Descargar y encender la IA',conversa:'3. Conversa',aviao:'✈️ Prueba de privacidad: activa ahora el <b>modo avión</b> y pregunta. Si responde, la respuesta salió de tu celular.',enviar:'Enviar',parar:'Parar',rapido:'Modo rápido',rapidoD:'Responde directo, sin "pensar" antes (mucho más rápido en el celular).',confira:'<b>Se equivoca.</b> En nuestra prueba, la misma pregunta sobre la dosis de un remedio salió mal una vez y bien la otra. Salud, derecho y dinero: confirma con un profesional. Sin censura = la responsabilidad es tuya.',espaco:'Liberar espacio',espacoD:'Borra el modelo guardado en este navegador (1,1 GB).',apagar:'Borrar la IA de este celular',guia:'Guía completa (iPhone, Android, PC)',rodape:'Gratis en inema.club, directo en internet.',placeholder:'Escribe tu pregunta…'}
+};
+const M = {
+  pt:{mem:'Memória',gpu:'Placa gráfica no navegador (WebGPU)',sim:'sim',nao:'não',nucleos:'Núcleos',fraco:'Pouca memória: pode fechar sozinho. Se travar, use um celular com 4 GB ou mais.',ios:'iPhone: o Safari limita a memória por página. Pode funcionar; se a página recarregar sozinha, use o app OnDevice (passo a passo no guia).',baixando:'Baixando',de:'de',carregando:'Ligando a IA… (uns segundos)',pronta:'Pronta. Pergunte o que quiser.',erro:'Falhou',apagado:'Modelo apagado deste navegador.',offline:'Sem internet e sem modelo guardado: conecte uma vez para baixar.',tok:'tokens/s',pensando:'pensando…',jaGuardado:'Já está guardado neste celular: abre sem baixar de novo.'},
+  en:{mem:'Memory',gpu:'Graphics in the browser (WebGPU)',sim:'yes',nao:'no',nucleos:'Cores',fraco:'Low memory: it may close by itself. If it freezes, use a phone with 4 GB or more.',ios:'iPhone: Safari limits memory per page. It may work; if the page reloads by itself, use the OnDevice app (steps in the guide).',baixando:'Downloading',de:'of',carregando:'Starting the AI… (a few seconds)',pronta:'Ready. Ask anything.',erro:'Failed',apagado:'Model deleted from this browser.',offline:'No internet and no stored model: connect once to download.',tok:'tokens/s',pensando:'thinking…',jaGuardado:'Already stored on this phone: opens without downloading again.'},
+  es:{mem:'Memoria',gpu:'Gráficos en el navegador (WebGPU)',sim:'sí',nao:'no',nucleos:'Núcleos',fraco:'Poca memoria: puede cerrarse sola. Si se traba, usa un celular con 4 GB o más.',ios:'iPhone: Safari limita la memoria por página. Puede funcionar; si la página se recarga sola, usa la app OnDevice (paso a paso en la guía).',baixando:'Descargando',de:'de',carregando:'Encendiendo la IA… (unos segundos)',pronta:'Lista. Pregunta lo que quieras.',erro:'Falló',apagado:'Modelo borrado de este navegador.',offline:'Sin internet y sin modelo guardado: conéctate una vez para descargar.',tok:'tokens/s',pensando:'pensando…',jaGuardado:'Ya está guardado en este celular: abre sin descargar de nuevo.'}
+};
+const q = new URLSearchParams(location.search).get('lang');
+const nav = (navigator.language || 'pt').slice(0, 2);
+const L = ['pt', 'en', 'es'].includes(q) ? q : (['en', 'es'].includes(nav) ? nav : 'pt');
+const m = M[L];
+if (L !== 'pt') {
+  document.documentElement.lang = L;
+  document.querySelectorAll('[data-t]').forEach(e => { const v = T[L][e.dataset.t]; if (v) e.innerHTML = v; });
+  document.getElementById('txt').placeholder = T[L].placeholder;
+}
+
+// ---------- modelos (só links oficiais do Hugging Face) ----------
+const MODELOS = {
+  sem: { repo: 'AtomicChat/LFM3-1.7B-Uncensored-GGUF', file: 'LFM3-1.7B-Uncensored-AD-Q4_K_M.gguf' },
+  normal: { repo: 'LiquidAI/LFM3-1.7B-GGUF', file: 'LFM3-1.7B-Q4_K_M.gguf' },
+};
+const $ = id => document.getElementById(id);
+const st = t => { $('st').textContent = t; };
+const mostrarErro = e => { st(`${m.erro}: ${e && e.message ? e.message : e}`); $('btBaixar').disabled = false; };
+
+// ---------- o aparelho ----------
+const mem = navigator.deviceMemory;           // Chrome/Android: GB aproximado (máx. 8)
+const gpu = !!navigator.gpu;
+const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+const chips = [
+  [`${m.mem}: ${mem ? (mem >= 8 ? '8+ GB' : mem + ' GB') : '?'}`, mem ? (mem >= 4 ? 'ok' : 'no') : ''],
+  [`${m.gpu}: ${gpu ? m.sim : m.nao}`, gpu ? 'ok' : ''],
+  [`${m.nucleos}: ${navigator.hardwareConcurrency || '?'}`, ''],
+];
+$('chips').innerHTML = chips.map(([t, c]) => `<span class="chip ${c}">${t}</span>`).join('');
+$('aviso-ap').textContent = ios ? m.ios : (mem && mem < 4 ? m.fraco : '');
+
+// ---------- service worker: guarda a página para abrir sem internet ----------
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
+let wllama = null, carregado = null, parar = null;
+const historico = [];
+
+async function ligar() {
+  const escolha = document.querySelector('input[name=mod]:checked').value;
+  if (carregado === escolha) return;
+  $('btBaixar').disabled = true;
+  try {
+    if (wllama) { await wllama.exit(); }
+    wllama = new Wllama({ default: new URL('./wllama/wasm/wllama.wasm', import.meta.url).href }, { allowOffline: true, suppressNativeLog: true });
+    const mdl = MODELOS[escolha];
+    const t0 = performance.now();
+    await wllama.loadModelFromUrl(`https://huggingface.co/${mdl.repo}/resolve/main/${mdl.file}`, {
+      n_ctx: 2048,
+      progressCallback: ({ loaded, total }) => {
+        const p = total ? Math.round(loaded / total * 100) : 0;
+        $('barra').style.width = p + '%';
+        st(`${m.baixando} ${(loaded / 1e9).toFixed(2)} ${m.de} ${(total / 1e9).toFixed(2)} GB (${p}%)`);
+        if (p >= 100) st(m.carregando);
+      },
+    });
+    carregado = escolha;
+    $('barra').style.width = '100%';
+    st(`${m.pronta} (${((performance.now() - t0) / 1000).toFixed(0)} s)`);
+    $('conversa').classList.remove('hide');
+    $('btBaixar').disabled = false;
+    $('txt').focus();
+  } catch (e) {
+    if (!navigator.onLine) st(m.offline); else mostrarErro(e);
+    $('btBaixar').disabled = false;
+  }
+}
+
+function bolha(cls, txt) {
+  const d = document.createElement('div'); d.className = 'm ' + cls; d.textContent = txt;
+  $('chat').appendChild(d); $('chat').scrollTop = 1e9; return d;
+}
+
+async function enviar() {
+  const txt = $('txt').value.trim();
+  if (!txt || !wllama) return;
+  $('txt').value = '';
+  bolha('u', txt);
+  historico.push({ role: 'user', content: txt });
+  const caixa = bolha('a', '');
+  const think = document.createElement('div'); think.className = 'think'; think.textContent = m.pensando; caixa.appendChild(think);
+  const corpo = document.createElement('div'); caixa.appendChild(corpo);
+  $('btEnviar').classList.add('hide'); $('btParar').classList.remove('hide');
+  const ac = new AbortController(); parar = () => ac.abort();
+  let resp = '', n = 0; const t0 = performance.now(); let t1 = 0;
+  try {
+    const rapido = $('rapido').checked;
+    const stream = await wllama.createChatCompletion({
+      messages: historico.slice(-6), max_tokens: rapido ? 700 : 1500, temperature: 0.3, stream: true,
+      ...(rapido ? { chat_template_kwargs: { enable_thinking: false } } : {}),
+      abortSignal: ac.signal,
+    });
+    for await (const ch of stream) {
+      const d = ch.choices?.[0]?.delta || {};
+      if (d.reasoning_content) { think.textContent = m.pensando + ' ' + d.reasoning_content.slice(-80); }
+      if (d.content) { if (!t1) t1 = performance.now(); resp += d.content; n++; corpo.textContent = resp; think.textContent = ''; $('chat').scrollTop = 1e9; }
+    }
+  } catch (e) { if (e.name !== 'AbortError') corpo.textContent = resp + `\n[${m.erro}: ${e.message || e}]`; }
+  think.remove();
+  if (n && t1) { const tps = document.createElement('div'); tps.className = 'tps'; tps.textContent = `${(n / ((performance.now() - t1) / 1000)).toFixed(1)} ${m.tok}`; caixa.appendChild(tps); }
+  historico.push({ role: 'assistant', content: resp });
+  $('btParar').classList.add('hide'); $('btEnviar').classList.remove('hide');
+}
+
+async function apagar() {
+  try {
+    if (wllama) { await wllama.exit(); wllama = null; carregado = null; }
+    const w = new Wllama({ default: './wllama/wasm/wllama.wasm' });
+    await w.cacheManager.clear();
+    $('conversa').classList.add('hide'); $('barra').style.width = '0';
+    st(m.apagado);
+  } catch (e) { mostrarErro(e); }
+}
+
+$('btBaixar').onclick = ligar;
+$('btEnviar').onclick = enviar;
+$('btParar').onclick = () => parar && parar();
+$('btApagar').onclick = apagar;
+$('txt').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 700) { e.preventDefault(); enviar(); } });
+window.__iaNoBolso = { ligar, enviar, apagar, get wllama() { return wllama; } };  // usado pelo teste automático
+</script>
+</body>
+</html>

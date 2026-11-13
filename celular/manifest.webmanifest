@@ -1,0 +1,11 @@
+{
+ "name": "IA no bolso",
+ "short_name": "IA no bolso",
+ "description": "IA sem censura dentro do celular, no navegador, offline.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0c0c10",
+ "theme_color": "#0c0c10",
+ "icons": [{"src": "icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]
+}
