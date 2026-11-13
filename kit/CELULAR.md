@@ -1,6 +1,6 @@
 # IA no bolso — passo a passo no celular
 
-Antes de tudo: `python3 kit/escolher.py --sistema <iphone|android> --ram <GB> --livre <GB>` diz se cabe e qual arquivo baixar.
+Antes de tudo: `python3 kit/escolher.py --sistema <iphone|android> --ram <GB> --livre <GB>` dá uma **estimativa** (regra de folga de memória, não medida num celular) de se cabe e qual arquivo baixar; a prova real é carregar no aparelho.
 Sem computador? Regra simples: precisa de **~3 GB de memória** e **~2 GB livres** para a versão Q4 (1,13 GB).
 
 ## iPhone (mostrado funcionando num iPhone 16; não testado por nós)

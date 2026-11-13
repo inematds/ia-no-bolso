@@ -19,7 +19,7 @@ def carregar():
 
 
 def escolher(sistema, ram, livre=None, dados=None):
-    """Devolve dict com veredito, arquivo, app, contexto e avisos. Regra: o arquivo inteiro precisa caber
+    """ESTIMATIVA (regra de folga, não medida em celular). Devolve dict com veredito, arquivo, app, contexto e avisos. Regra: o arquivo inteiro precisa caber
     na memória com folga para o sistema e o app (arquivo + 1,5 GB no celular, + 2 GB no PC)."""
     dados = dados or carregar()
     sistema = sistema.lower()
@@ -69,7 +69,7 @@ def main(argv=None):
         return 0
     if r['veredito'] == 'sim':
         q = r['arquivo']
-        print(f"SIM. Baixe {q['nome']} ({q['gb']:.2f} GB).")
+        print(f"SIM (estimativa pela memória; confirme no aparelho). Baixe {q['nome']} ({q['gb']:.2f} GB).")
         print(f"App: {r['app']['nome']} — {r['app']['onde']}")
         print(f"Contexto: {r['contexto']} tokens.")
     else:

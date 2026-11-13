@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Roda a IA sem censura no PC, offline, só para você (127.0.0.1). Testado no Linux em 13/11/2026.
+# Roda a IA sem censura no PC, offline, só para você (127.0.0.1). Testado de ponta a ponta no Linux (Ubuntu, só CPU) em 13/11/2026: clonou, compilou, baixou, conferiu o tamanho e respondeu ao kit/medir.py.
 #   bash kit/pc/rodar.sh            # compila o llama.cpp (só CPU), baixa o Q4 uma vez e sobe o servidor
 #   QUANT=Q6_K bash kit/pc/rodar.sh # versão maior
 #   PORTA=18431 THREADS=4 bash kit/pc/rodar.sh

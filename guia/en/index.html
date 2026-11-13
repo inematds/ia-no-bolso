@@ -349,9 +349,9 @@
   <p class="sub">Actual commands from the repository.</p>
   <div class="step"><div class="b">1</div><div><h3>Clone the kit</h3>
 <pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/ia-no-bolso</span> && <span class="k">cd</span> ia-no-bolso</pre></div></div>
-  <div class="step"><div class="b">2</div><div><h3>Can my phone handle it?</h3><p>Enter the system, memory (GB), and, if you want, free space (GB).</p>
+  <div class="step"><div class="b">2</div><div><h3>Can my phone handle it?</h3><p>Enter the system, memory (GB), and, if you want, free space (GB). It is an <strong>estimate</strong> based on memory headroom, not a measurement on a phone: the real proof is loading it on the device.</p>
 <pre><span class="k">python3 kit/escolher.py</span> --sistema iphone --ram 8
-<span class="c"># (the script answers in Portuguese) SIM. Baixe LFM3-1.7B-Uncensored-AD-Q6_K.gguf (1.59 GB).</span>
+<span class="c"># (the script answers in Portuguese) SIM (estimativa pela memória; confirme no aparelho). Baixe LFM3-1.7B-Uncensored-AD-Q6_K.gguf (1.59 GB).</span>
 <span class="c"># App: OnDevice: Local AI Studio — App Store; pede iOS 18+ ...</span>
 <span class="c"># Contexto: 4096 tokens.</span>
 <span class="k">python3 kit/escolher.py</span> --sistema android --ram 3 --livre 1
