@@ -1,0 +1,26 @@
+{
+ "conferido_em": "2026-11-13",
+ "modelo": {
+  "repo": "AtomicChat/LFM3-1.7B-Uncensored-GGUF",
+  "url": "https://huggingface.co/AtomicChat/LFM3-1.7B-Uncensored-GGUF",
+  "base": "LiquidAI/LFM3-1.7B",
+  "licenca": "LFM Open License v1.0 (leia antes de usar; o kit não redistribui o arquivo)",
+  "so_texto": true,
+  "nota": "Sem arquivo mmproj no repositório: este GGUF responde texto. Imagem e áudio ficam em outros modelos da família."
+ },
+ "arquivos": [
+  {"nome": "LFM3-1.7B-Uncensored-AD-Q4_K_M.gguf", "gb": 1.13, "bytes": 1132208000, "quando": "padrão: celular e PC fracos"},
+  {"nome": "LFM3-1.7B-Uncensored-AD-Q6_K.gguf", "gb": 1.59, "bytes": 1587969920, "quando": "um pouco melhor, se sobrar memória"}
+ ],
+ "reserva": {
+  "nome": "LFM3-1.7B-Q4_K_M.gguf (versão normal da Liquid AI, com recusas)",
+  "repo": "LiquidAI/LFM3-1.7B-GGUF",
+  "gb": 1.1,
+  "quando": "o app não carrega a versão sem censura, ou você quer as travas de segurança"
+ },
+ "apps": {
+  "iphone": {"nome": "OnDevice: Local AI Studio", "onde": "App Store; pede iOS 18+; busca no Hugging Face dentro do app", "conferido": "mostrado funcionando num iPhone 16 (não testado por nós)"},
+  "android": {"nome": "Layla", "onde": "Play Store; importa arquivo GGUF", "conferido": "importa GGUF, mas este arquivo LFM3 não foi confirmado no Android"},
+  "pc": {"nome": "llama.cpp (llama-server)", "onde": "kit/pc/rodar.sh compila e sobe só em 127.0.0.1", "conferido": "medido por nós em 13/11/2026 (llama.cpp 5676dfb)"}
+ }
+}

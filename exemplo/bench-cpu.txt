@@ -1,0 +1,10 @@
+| model                          |       size |     params | backend    | threads |            test |                  t/s |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       4 |           pp128 |         27.78 ± 2.16 |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       4 |            tg64 |         13.87 ± 6.84 |
+| model                          |       size |     params | backend    | threads |            test |                  t/s |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       8 |           pp128 |         42.80 ± 1.30 |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       8 |            tg64 |          2.97 ± 1.52 |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       4 |            pp64 |         63.39 ± 3.47 |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       4 |           tg128 |         20.55 ± 7.42 |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       6 |            pp64 |         41.42 ± 7.10 |
+| lfm3 1.7B Q4_K - Medium        |   1.05 GiB |     1.73 B | CPU        |       6 |           tg128 |         13.92 ± 2.00 |
