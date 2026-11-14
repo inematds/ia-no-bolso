@@ -2,8 +2,8 @@
 // 1) Guarda a página e o motor (wllama) para abrir sem internet (o modelo fica no cache do próprio wllama).
 // 2) Fora do iPhone, liga o isolamento de origem (COOP/COEP credentialless) para o motor usar vários núcleos;
 //    o GitHub Pages não deixa configurar esses cabeçalhos, então o service worker põe na resposta.
-const VERSAO = 'ia-no-bolso-v3';
-const CASCA = ['./', './index.html', './manifest.webmanifest', './icone.svg', './wllama/index.js', './wllama/wasm/wllama.wasm'];
+const VERSAO = 'ia-no-bolso-v4';
+const CASCA = ['./', './index.html', './manifest.webmanifest', './icone.svg', './icone-192.png', './icone-512.png', './apple-touch-icon.png', './wllama/index.js', './wllama/wasm/wllama.wasm'];
 const IOS = /iPhone|iPad|iPod/.test(self.navigator.userAgent);
 
 self.addEventListener('install', e => {
