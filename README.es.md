@@ -12,7 +12,7 @@ Cuando usas la IA de una aplicación común, la pregunta sale del celular y lleg
 
 Guía completa (landing + paso a paso): **https://inematds.github.io/ia-no-bolso/guia/es/**
 
-📱 **Pruébalo en el celular sin instalar nada:** https://inematds.github.io/ia-no-bolso/celular/?lang=es — abre en el navegador, descarga 1,1 GB una vez y luego funciona en modo avión (probado en Chrome simulando Android; aún no en un celular real).
+📱 **Pruébalo en el celular sin instalar nada:** https://inematds.github.io/ia-no-bolso/celular/?lang=es — abre en el navegador, descarga 1,1 GB una vez y luego funciona en modo avión (probado en Chrome simulando Android y en un celular real el 14/11/2026). Consejo: después de encender, usa "Agregar a la pantalla principal" y queda como app con ícono.
 
 ---
 

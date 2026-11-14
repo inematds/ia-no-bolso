@@ -12,7 +12,7 @@ Quando você usa a IA de um aplicativo comum, a pergunta sai do celular e vai pa
 
 Guia completo (landing + passo a passo): **https://inematds.github.io/ia-no-bolso/guia/**
 
-📱 **Testar no celular sem instalar nada:** https://inematds.github.io/ia-no-bolso/celular/ — abre no navegador, baixa 1,1 GB uma vez e depois funciona no modo avião (testado no Chrome simulando Android; celular de verdade ainda não).
+📱 **Testar no celular sem instalar nada:** https://inematds.github.io/ia-no-bolso/celular/ — abre no navegador, baixa 1,1 GB uma vez e depois funciona no modo avião (testado no Chrome simulando Android e num celular de verdade em 14/11/2026). Dica: depois de ligar, use "Adicionar à tela inicial" e ela vira app com ícone.
 
 ---
 
